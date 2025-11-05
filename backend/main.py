@@ -85,7 +85,13 @@ manager = ConnectionManager()
 
 @app.get("/")
 async def root():
-    return {"message": "Music Quiz Game API", "version": "1.0.0"}
+    return {"message": "Music Quiz Game API", "version": "1.0.0", "status": "running"}
+
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for Railway"""
+    return {"status": "healthy", "service": "music-quiz-backend"}
 
 
 # Quiz Management Endpoints
