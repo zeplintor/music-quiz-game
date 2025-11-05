@@ -27,15 +27,17 @@ Ce guide vous explique comment déployer votre Music Quiz Game sur **Netlify** (
 
 ### 1.3 Configuration Railway
 
-**Settings → General** :
-- **Service Name** : `music-quiz-backend`
-- **Root Directory** : `/backend`
-- **Start Command** : `uvicorn main:app --host 0.0.0.0 --port $PORT`
+⚠️ **IMPORTANT** : Railway détectera automatiquement la configuration via les fichiers `railway.toml` et `nixpacks.toml` présents dans le repository.
 
-**Settings → Variables** :
+**Si le déploiement échoue, vérifiez dans Settings** :
+- **Start Command** : `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT`
+- **Install Command** : `pip install -r backend/requirements.txt`
+
+**Pas besoin de définir Root Directory** - le code gère déjà `cd backend`
+
+**Variables d'environnement (optionnel)** :
 ```
 PYTHON_VERSION=3.9
-PORT=8000
 ```
 
 ### 1.4 Générer un domaine public
