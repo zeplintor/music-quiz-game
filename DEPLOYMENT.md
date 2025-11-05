@@ -27,18 +27,22 @@ Ce guide vous explique comment déployer votre Music Quiz Game sur **Netlify** (
 
 ### 1.3 Configuration Railway
 
-⚠️ **IMPORTANT** : Railway détectera automatiquement la configuration via les fichiers `railway.toml` et `nixpacks.toml` présents dans le repository.
+⚠️ **IMPORTANT** : Railway détectera automatiquement la configuration via `nixpacks.toml` et `railway.json`.
 
-**Si le déploiement échoue, vérifiez dans Settings** :
-- **Start Command** : `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT`
-- **Install Command** : `pip install -r backend/requirements.txt`
+**Si vous voyez l'erreur "undefined variable 'pip'"** :
 
-**Pas besoin de définir Root Directory** - le code gère déjà `cd backend`
+Cela signifie que Railway utilise un ancien cache de build. Pour corriger :
 
-**Variables d'environnement (optionnel)** :
-```
-PYTHON_VERSION=3.9
-```
+1. Allez dans **Settings** → **General**
+2. Trouvez la section **"Danger Zone"**
+3. Cliquez sur **"Clear Build Cache"**
+4. Retournez dans **Deployments** et cliquez **"Redeploy"**
+
+**Configuration automatique** :
+- Railway installera automatiquement les dépendances : `pip install -r requirements.txt`
+- Railway démarrera avec : `cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT`
+
+**Pas besoin de configuration manuelle** - tout est dans les fichiers de config.
 
 ### 1.4 Générer un domaine public
 
