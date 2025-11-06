@@ -10,4 +10,5 @@
 
 [build.environment]
   NODE_VERSION = "18"
-  NPM_FLAGS = "--no-optional"
+  # Tell Netlify this is a Node.js project, not Python
+  NETLIFY_USE_YARN = "false"
